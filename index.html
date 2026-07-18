@@ -7,7 +7,9 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Plucker" />
-  <title>Plucker V5</title>
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <title>Plucker</title>
   <style>
     :root{
       --bg1:#070b26;
@@ -18,8 +20,8 @@
       --glass:rgba(255,255,255,.10);
       --glass-border:rgba(255,255,255,.14);
       --shadow:0 22px 60px rgba(3,4,24,.42);
-      --accent:#d97732;
-      --accent2:#a9471f;
+      --accent:#c85a12;
+      --accent2:#87320e;
       --danger:#c94d3f;
     }
 
@@ -28,7 +30,7 @@
     body{
       min-height:100dvh;
       background:
-        radial-gradient(circle at 50% 10%, rgba(223,112,43,.18), transparent 30%),
+        radial-gradient(circle at 50% 10%, rgba(204,83,18,.16), transparent 30%),
         radial-gradient(circle at 86% 88%, rgba(116,92,255,.28), transparent 34%),
         radial-gradient(circle at 12% 72%, rgba(41,181,255,.16), transparent 28%),
         linear-gradient(160deg,var(--bg1),var(--bg2) 54%,var(--bg3));
@@ -86,9 +88,9 @@
     .hero > *:not(.wave-field){position:relative;z-index:2}
     .wave-field{
       position:absolute;
-      inset:8% -22px 10%;
+      inset:2% -48px 4%;
       z-index:1;
-      opacity:.42;
+      opacity:.66;
       pointer-events:none;
       mask-image:linear-gradient(to bottom,transparent 0%,black 18%,black 82%,transparent 100%);
       -webkit-mask-image:linear-gradient(to bottom,transparent 0%,black 18%,black 82%,transparent 100%);
@@ -102,7 +104,7 @@
     .wave-one{stroke:rgba(238,151,88,.46);stroke-width:2.2}
     .wave-two{stroke:rgba(255,220,190,.22);stroke-width:1.5}
     .wave-three{stroke:rgba(183,102,206,.20);stroke-width:1.2}
-    .hero.is-running .wave-field{opacity:.72}
+    .hero.is-running .wave-field{opacity:1}
 
     .eyebrow{
       font-size:.86rem;
@@ -130,12 +132,12 @@
       font-weight:800;
       letter-spacing:.11em;
       background:
-        radial-gradient(circle at 35% 28%, #ffd6b2 0%, #e99855 28%, #c55a28 68%, #79331c 100%);
+        radial-gradient(circle at 35% 28%, #ffc58f 0%, #de741f 28%, #b74d0e 68%, #652608 100%);
       box-shadow:
-        0 26px 70px rgba(211,93,37,.36),
+        0 26px 70px rgba(185,70,13,.42),
         0 0 0 18px rgba(255,255,255,.045),
         inset 0 5px 12px rgba(255,255,255,.38),
-        inset 0 -14px 25px rgba(74,24,13,.34);
+        inset 0 -14px 25px rgba(64,19,5,.38);
       transition:transform .22s ease, filter .22s ease, box-shadow .22s ease;
       position:relative;
       overflow:hidden;
@@ -153,13 +155,13 @@
     .orb:active{transform:scale(.97)}
     .orb.running{
       animation:pulse 2.3s ease-in-out infinite;
-      background:radial-gradient(circle at 35% 28%, #ffe0c2 0%, #df8746 34%, #b64c25 72%, #6c2d1b 100%);
+      background:radial-gradient(circle at 35% 28%, #ffd0a0 0%, #d66a16 34%, #a7400b 72%, #572008 100%);
       color:#fff4e8;
     }
 
     @keyframes pulse{
-      0%,100%{box-shadow:0 26px 70px rgba(211,93,37,.36),0 0 0 12px rgba(255,255,255,.035),inset 0 5px 12px rgba(255,255,255,.35),inset 0 -14px 25px rgba(74,24,13,.34)}
-      50%{box-shadow:0 30px 82px rgba(199,76,31,.48),0 0 0 18px rgba(232,136,72,.10),inset 0 5px 12px rgba(255,255,255,.35),inset 0 -14px 25px rgba(74,24,13,.34)}
+      0%,100%{box-shadow:0 26px 70px rgba(185,70,13,.42),0 0 0 12px rgba(255,255,255,.035),inset 0 5px 12px rgba(255,255,255,.35),inset 0 -14px 25px rgba(64,19,5,.38)}
+      50%{box-shadow:0 30px 82px rgba(172,58,10,.56),0 0 0 18px rgba(221,106,29,.12),inset 0 5px 12px rgba(255,255,255,.35),inset 0 -14px 25px rgba(64,19,5,.38)}
     }
 
     .subline{
@@ -204,7 +206,7 @@
     .bars{display:grid;grid-template-columns:repeat(7,1fr);gap:9px;align-items:end;height:110px}
     .day{display:flex;flex-direction:column;align-items:center;gap:8px;height:100%;justify-content:flex-end}
     .bar-track{height:84px;width:100%;border-radius:999px;background:rgba(255,255,255,.07);display:flex;align-items:flex-end;overflow:hidden}
-    .bar-fill{width:100%;min-height:4px;border-radius:999px;background:linear-gradient(180deg,#e9a268,#b95429);box-shadow:0 0 16px rgba(201,83,38,.30)}
+    .bar-fill{width:100%;min-height:4px;border-radius:999px;background:linear-gradient(180deg,#dd7b2f,#a8410d);box-shadow:0 0 16px rgba(175,61,11,.34)}
     .day-label{font-size:.7rem;color:rgba(247,234,216,.65)}
 
     .footer-actions{
@@ -257,6 +259,116 @@
     .save{background:#7b4bc4;color:white}
 
 
+
+    .quick-log-wrap{margin-top:-4px}
+    .quick-log{
+      width:100%;border:0;border-radius:22px;padding:14px 16px;
+      display:flex;align-items:center;gap:12px;text-align:left;
+      color:var(--cream);background:rgba(255,255,255,.11);
+      box-shadow:inset 0 0 0 1px var(--glass-border),0 12px 34px rgba(3,4,24,.18);
+      backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+    }
+    .quick-log:active{transform:scale(.985)}
+    .quick-log-plus{
+      width:42px;height:42px;border-radius:50%;display:grid;place-items:center;
+      background:linear-gradient(145deg,#dc6b18,#9d3909);font-size:1.45rem;font-weight:500;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 8px 20px rgba(116,39,5,.28)
+    }
+    .quick-log strong{display:block;font-size:1rem}
+    .quick-log small{display:block;margin-top:2px;color:var(--muted);font-size:.76rem}
+    .single-action{grid-template-columns:1fr}
+    .tappable-stats{cursor:pointer;transition:transform .18s ease,background .18s ease}
+    .tappable-stats:active{transform:scale(.985)}
+    .stats-grid.tappable-stats .card{pointer-events:none}
+    .wave-one{filter:drop-shadow(0 0 8px rgba(200,90,18,.34))}
+    .wave-two{filter:drop-shadow(0 0 5px rgba(255,205,163,.18))}
+    .wave-three{filter:drop-shadow(0 0 4px rgba(183,102,206,.16))}
+    .wave-four{stroke:rgba(200,90,18,.20);stroke-width:1.05;filter:drop-shadow(0 0 5px rgba(200,90,18,.18))}
+    .wave-five{stroke:rgba(255,239,224,.12);stroke-width:.9}
+    .hero.is-running .wave-one{stroke-width:2.8}
+    .hero.is-running .wave-four{stroke-width:1.35}
+
+
+    .app-header{
+      display:grid;grid-template-columns:44px 1fr 44px;align-items:center;
+      padding:2px 2px 0;
+    }
+    .brand-lockup{text-align:center}
+    .brand{font-size:.76rem;letter-spacing:.28em;color:#f3c08f}
+    .brand-subtitle{font-size:.66rem;color:rgba(255,255,255,.44);margin-top:3px}
+    .header-action{
+      width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.16);
+      color:#fff;background:rgba(255,255,255,.06);font-size:1.3rem;
+      backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)
+    }
+
+    .hero{min-height:470px}
+    .timer{
+      display:block;margin:0;font-size:clamp(3.4rem,15vw,5.2rem);
+      letter-spacing:-.065em;color:#fff;font-variant-numeric:tabular-nums;
+      text-shadow:0 8px 28px rgba(0,0,0,.30)
+    }
+    .orb{
+      width:min(78vw,315px);font-size:inherit;display:grid;place-items:center;
+      position:relative;isolation:isolate;overflow:visible;
+      background:
+        radial-gradient(circle at 34% 24%,#ffd0a0 0%,#d66a16 28%,#a7400b 68%,#572008 100%);
+      box-shadow:
+        0 38px 110px rgba(172,58,10,.60),
+        0 0 0 18px rgba(255,255,255,.035),
+        0 0 0 30px rgba(200,90,18,.035),
+        inset 0 8px 16px rgba(255,255,255,.28),
+        inset 0 -20px 32px rgba(56,15,4,.44);
+      transform:translateZ(0);
+    }
+    .orb::after{display:none}
+    .orb-content{position:relative;z-index:4;display:grid;gap:10px;text-align:center}
+    .orb-label{font-size:.76rem;font-weight:800;letter-spacing:.14em;color:#fff1e6}
+    .orb-sheen{
+      position:absolute;z-index:2;inset:4%;border-radius:50%;pointer-events:none;
+      background:radial-gradient(circle at 34% 24%,rgba(255,255,255,.30),transparent 24%);
+      animation:orbOrbit 14s linear infinite;
+    }
+    .orb-ring{
+      position:absolute;z-index:1;inset:-14px;border-radius:50%;
+      border:4px solid rgba(200,90,18,.34);
+      border-top-color:#ed8a3a;border-right-color:rgba(237,138,58,.24);
+      transform:rotate(-38deg);
+      transition:transform .5s ease,border-color .3s ease;
+    }
+    .orb.running{transform:scale(1.045)}
+    .orb.running .orb-ring{animation:ringSpin 7s linear infinite;border-top-color:#ff9b4f}
+    .orb.running .orb-sheen{animation-duration:7s}
+    @keyframes ringSpin{to{transform:rotate(322deg)}}
+    @keyframes orbOrbit{
+      0%{transform:rotate(0deg) translateX(0)}
+      50%{transform:rotate(180deg) translateX(4px)}
+      100%{transform:rotate(360deg) translateX(0)}
+    }
+
+    .completion-message{
+      min-height:26px;margin-top:10px;font-size:.84rem;color:#f2b37c;
+      opacity:0;transform:translateY(4px);transition:opacity .3s ease,transform .3s ease
+    }
+    .completion-message.show{opacity:1;transform:translateY(0)}
+
+    .home-summary{
+      display:grid;grid-template-columns:1fr 1px 1fr 1px 1fr;
+      gap:10px;align-items:stretch;padding:18px 16px;border-radius:24px;
+      background:rgba(15,11,35,.55);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);
+      backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)
+    }
+    .home-summary-item span{display:block;font-size:.66rem;text-transform:uppercase;letter-spacing:.08em;color:#b8accd}
+    .home-summary-item strong{display:block;margin-top:8px;font-size:1.22rem;color:#fff}
+    .home-summary-item small{display:block;margin-top:5px;font-size:.64rem;line-height:1.3;color:#756b86}
+    .home-summary-divider{width:1px;background:rgba(255,255,255,.08)}
+
+    .history-item{cursor:pointer;align-items:center}
+    .history-item:hover{background:rgba(86,58,130,.12)}
+    .edit-session-hint{font-size:.72rem;color:#8a7b98;margin-top:3px}
+    .history-actions{pointer-events:none}
+    .delete-session{pointer-events:auto}
+
     .stats-modal{max-height:88dvh;overflow:auto;padding-bottom:24px}
     .stats-top{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
     .stats-close{border:0;background:#e8dff7;color:#4c3a67;width:38px;height:38px;border-radius:50%;font-size:1.35rem}
@@ -268,15 +380,15 @@
       box-shadow:inset 0 0 0 1px rgba(255,255,255,.05)
     }
     .trend-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
-    .trend-label,.insight-kicker{font-size:.78rem;color:#d97732;font-weight:800;letter-spacing:.04em}
+    .trend-label,.insight-kicker{font-size:.78rem;color:#c85a12;font-weight:800;letter-spacing:.04em}
     .trend-value{font-size:2.2rem;font-weight:750;margin-top:4px}
     .trend-change{font-size:.78rem;color:#bbb5c3;text-align:right;max-width:135px}
     .chart-wrap{position:relative;height:220px;margin-top:12px;touch-action:none}
     #trendChart{width:100%;height:100%;overflow:visible}
-    .line-path{fill:none;stroke:#d97732;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+    .line-path{fill:none;stroke:#c85a12;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
     .area-path{fill:url(#areaFill)}
     .hover-line{stroke:rgba(255,255,255,.35);stroke-width:1;stroke-dasharray:4 5;opacity:0}
-    .hover-dot{fill:#d97732;stroke:#fff;stroke-width:3;opacity:0}
+    .hover-dot{fill:#c85a12;stroke:#fff;stroke-width:3;opacity:0}
     .chart-tooltip{
       position:absolute;transform:translate(-50%,-110%);background:#f5f1f8;color:#2b2432;
       border-radius:12px;padding:8px 10px;font-size:.76rem;font-weight:800;pointer-events:none;
@@ -289,13 +401,13 @@
     .comparison-label strong{font-size:1.02rem;color:#fff}
     .comparison-track{height:14px;border-radius:999px;background:#4c4950;overflow:hidden}
     .comparison-fill{height:100%;border-radius:999px;transition:width .5s ease}
-    .comparison-fill.current{background:#d97732}
+    .comparison-fill.current{background:#c85a12}
     .comparison-fill.previous{background:#77727c}
     .visual-metrics{display:grid;grid-template-columns:126px 1fr;gap:18px;align-items:center}
     .metric-ring{
       --pct:0;
       width:118px;aspect-ratio:1;border-radius:50%;
-      background:conic-gradient(#d97732 calc(var(--pct)*1%),#4b4750 0);
+      background:conic-gradient(#c85a12 calc(var(--pct)*1%),#4b4750 0);
       display:grid;place-items:center;position:relative
     }
     .metric-ring::before{content:"";position:absolute;inset:10px;border-radius:50%;background:#28252c}
@@ -340,9 +452,13 @@
 </head>
 <body>
   <main class="shell">
-    <header>
-      <div class="brand">PLUCKER</div>
-      <button class="icon-btn" id="menuButton" aria-label="Open history">•••</button>
+    <header class="app-header">
+      <button class="header-action" id="historyTopButton" aria-label="Open practice history">‹</button>
+      <div class="brand-lockup">
+        <div class="brand">PLUCKER</div>
+        <div class="brand-subtitle">Practice with purpose.</div>
+      </div>
+      <button class="header-action" id="statsTopButton" aria-label="Open practice stats">↗</button>
     </header>
 
     <section class="hero">
@@ -351,41 +467,60 @@
           <path class="wave wave-one" id="waveOne"></path>
           <path class="wave wave-two" id="waveTwo"></path>
           <path class="wave wave-three" id="waveThree"></path>
+          <path class="wave wave-four" id="waveFour"></path>
+          <path class="wave wave-five" id="waveFive"></path>
         </svg>
       </div>
       <div class="eyebrow" id="eyebrow">Ready when you are.</div>
-      <div class="timer" id="timer">00:00</div>
-      <button class="orb" id="practiceButton">START PRACTICE</button>
-      <div class="subline" id="subline">Tap once. Play. Tap again.</div>
+      <button class="orb" id="practiceButton" aria-label="Start practice">
+        <span class="orb-sheen"></span>
+        <span class="orb-ring"></span>
+        <span class="orb-content">
+          <span class="timer" id="timer">00:00</span>
+          <span class="orb-label" id="orbLabel">TAP TO START</span>
+        </span>
+      </button>
+      <div class="subline" id="subline">One tap. Then just play.</div>
+      <div class="completion-message" id="completionMessage" aria-live="polite"></div>
     </section>
 
-    <section class="stats-grid">
-      <div class="card">
-        <div class="stat-label">This week</div>
-        <div class="stat-value" id="weekStat">0m</div>
+    <section class="quick-log-wrap">
+      <button class="quick-log" id="manualButton">
+        <span class="quick-log-plus">＋</span>
+        <span>
+          <strong>Log a session</strong>
+          <small>Add practice manually</small>
+        </span>
+      </button>
+    </section>
+
+    <section class="home-summary tappable-stats" id="summaryStats" role="button" tabindex="0" aria-label="Open detailed practice stats">
+      <div class="home-summary-item">
+        <span>This week</span>
+        <strong id="weekStat">0m</strong>
+        <small id="weekDelta">Your first session starts the story.</small>
       </div>
-      <div class="card">
-        <div class="stat-label">This month</div>
-        <div class="stat-value" id="monthStat">0m</div>
+      <div class="home-summary-divider"></div>
+      <div class="home-summary-item">
+        <span>Streak</span>
+        <strong id="homeStreakStat">0 days</strong>
+        <small>Keep your rhythm alive.</small>
       </div>
-      <div class="card">
-        <div class="stat-label">Your journey</div>
-        <div class="stat-value" id="totalStat">0m</div>
+      <div class="home-summary-divider"></div>
+      <div class="home-summary-item">
+        <span>Sessions</span>
+        <strong id="homeSessionCount">0</strong>
+        <small>Total recorded.</small>
       </div>
     </section>
 
-    <section class="card week-card">
-      <div class="week-head">
-        <div class="week-title">Your week</div>
-        <div class="week-total" id="sessionsStat">0 sessions</div>
-      </div>
-      <div class="bars" id="bars"></div>
+    <section class="footer-actions single-action">
+      <button class="secondary" id="statsButton">View all stats</button>
     </section>
-
-    <section class="footer-actions">
-      <button class="secondary" id="manualButton">＋ Log session</button>
-      <button class="secondary" id="statsButton">View stats</button>
-    </section>
+    <span id="monthStat" hidden>0m</span>
+    <span id="totalStat" hidden>0m</span>
+    <span id="sessionsStat" hidden>0 sessions</span>
+    <div id="bars" hidden></div>
   </main>
 
   <dialog id="manualDialog">
@@ -455,8 +590,8 @@
           <svg id="trendChart" viewBox="0 0 640 260" preserveAspectRatio="none" role="img" aria-label="Practice time trend">
             <defs>
               <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#d97732" stop-opacity=".40"/>
-                <stop offset="100%" stop-color="#d97732" stop-opacity="0"/>
+                <stop offset="0%" stop-color="#c85a12" stop-opacity=".40"/>
+                <stop offset="100%" stop-color="#c85a12" stop-opacity="0"/>
               </linearGradient>
             </defs>
             <path id="areaPath" class="area-path"></path>
@@ -520,6 +655,42 @@
     </div>
   </dialog>
 
+
+  <dialog id="editDialog">
+    <div class="modal">
+      <div class="stats-top">
+        <div>
+          <h2>Edit session</h2>
+          <p>Adjust the date, duration, or note.</p>
+        </div>
+        <button type="button" class="stats-close" id="closeEdit" aria-label="Close edit session">×</button>
+      </div>
+
+      <div class="field">
+        <label for="editDate">Date</label>
+        <input id="editDate" type="date" />
+      </div>
+
+      <div class="field">
+        <label>Duration</label>
+        <div class="duration-row">
+          <div><input id="editHours" type="number" min="0" max="24" step="1" inputmode="numeric" placeholder="0" /><span>hours</span></div>
+          <div><input id="editMinutes" type="number" min="0" max="59" step="1" inputmode="numeric" placeholder="0" /><span>minutes</span></div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="editNote">Note</label>
+        <textarea id="editNote" placeholder="What did you work on?"></textarea>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="cancel" id="deleteEditedSession">Delete</button>
+        <button type="button" class="save" id="saveEditedSession">Save changes</button>
+      </div>
+    </div>
+  </dialog>
+
   <dialog id="historyDialog">
     <div class="modal">
       <h2>Practice history</h2>
@@ -547,6 +718,8 @@
     const manualDialog = document.getElementById("manualDialog");
     const historyDialog = document.getElementById("historyDialog");
     const statsDialog = document.getElementById("statsDialog");
+    const editDialog = document.getElementById("editDialog");
+    let editingSessionId = null;
     const sessionDate = document.getElementById("sessionDate");
     const sessionHours = document.getElementById("sessionHours");
     const sessionMinutes = document.getElementById("sessionMinutes");
@@ -600,14 +773,18 @@
       timerEl.textContent = "00:00";
       saveSessions();
       updateRunningUI();
-      eyebrow.textContent = "Session saved.";
-      subline.textContent = `${formatDuration(minutes)} of music today.`;
+      const completion = document.getElementById("completionMessage");
+      completion.textContent = `Nice session — ${formatDuration(minutes)} added to your journey.`;
+      completion.classList.add("show");
+      eyebrow.textContent = "That counted.";
+      subline.textContent = "Come back whenever the music calls.";
       setTimeout(() => {
+        completion.classList.remove("show");
         if (!runningStart) {
           eyebrow.textContent = "Ready when you are.";
-          subline.textContent = "Tap once. Play. Tap again.";
+          subline.textContent = "One tap. Then just play.";
         }
-      }, 2400);
+      }, 3200);
       if (navigator.vibrate) navigator.vibrate([25,50,25]);
     }
 
@@ -620,9 +797,10 @@
       const active = !!runningStart;
       practiceButton.classList.toggle("running", active);
       document.querySelector(".hero").classList.toggle("is-running", active);
-      practiceButton.textContent = active ? "STOP PRACTICE" : "START PRACTICE";
+      document.getElementById("orbLabel").textContent = active ? "TAP TO STOP" : "TAP TO START";
+      practiceButton.setAttribute("aria-label", active ? "Stop practice" : "Start practice");
       eyebrow.textContent = active ? "You’re making music." : "Ready when you are.";
-      subline.textContent = active ? "Stay here as long as you like." : "Tap once. Play. Tap again.";
+      subline.textContent = active ? "Stay here as long as you like." : "One tap. Then just play.";
       if (active && !tickInterval) tickInterval = setInterval(updateTimer,1000);
     }
 
@@ -645,10 +823,34 @@
 
       const sum = arr => arr.reduce((a,s) => a + Number(s.minutes || 0), 0);
 
-      document.getElementById("weekStat").textContent = formatDuration(sum(weekSessions));
+      const weekMinutes = sum(weekSessions);
+      document.getElementById("weekStat").textContent = formatDuration(weekMinutes);
       document.getElementById("monthStat").textContent = formatDuration(sum(monthSessions));
       document.getElementById("totalStat").textContent = formatDuration(sum(sessions));
       document.getElementById("sessionsStat").textContent = `${weekSessions.length} session${weekSessions.length===1?"":"s"}`;
+      document.getElementById("homeSessionCount").textContent = String(sessions.length);
+      document.getElementById("homeStreakStat").textContent = `${calculateStreak()} day${calculateStreak()===1?"":"s"}`;
+
+      const previousWeekStart = new Date(weekStart);
+      previousWeekStart.setDate(previousWeekStart.getDate() - 7);
+      const previousWeekMinutes = sessions
+        .filter(s => {
+          const d = new Date(s.date);
+          return d >= previousWeekStart && d < weekStart;
+        })
+        .reduce((a,s) => a + Number(s.minutes || 0), 0);
+      const weekDelta = document.getElementById("weekDelta");
+      if (weekMinutes === 0 && previousWeekMinutes === 0) {
+        weekDelta.textContent = "Your first session starts the story.";
+      } else if (previousWeekMinutes === 0) {
+        weekDelta.textContent = `${formatDuration(weekMinutes)} recorded this week.`;
+      } else if (weekMinutes > previousWeekMinutes) {
+        weekDelta.textContent = `${formatDuration(weekMinutes-previousWeekMinutes)} ahead of last week.`;
+      } else if (weekMinutes < previousWeekMinutes) {
+        weekDelta.textContent = `${formatDuration(previousWeekMinutes-weekMinutes)} behind last week so far.`;
+      } else {
+        weekDelta.textContent = "Exactly matching last week.";
+      }
 
       const totals = Array(7).fill(0);
       weekSessions.forEach(s => {
@@ -679,10 +881,11 @@
       list.innerHTML = sorted.map(s => {
         const d = new Date(s.date);
         const dateText = d.toLocaleDateString(undefined,{weekday:"short",month:"short",day:"numeric"});
-        return `<div class="history-item">
+        return `<div class="history-item" data-id="${s.id}">
           <div class="history-main">
             <div class="history-date">${dateText}</div>
             <div class="history-note">${s.note ? escapeHtml(s.note) : "Practice session"}</div>
+            <div class="edit-session-hint">Tap to edit</div>
           </div>
           <div class="history-actions">
             <div class="history-duration">${formatDuration(s.minutes)}</div>
@@ -692,6 +895,53 @@
       }).join("");
     }
 
+
+
+    function openEditSession(id){
+      const session = sessions.find(s => s.id === id);
+      if(!session) return;
+      editingSessionId = id;
+      const d = new Date(session.date);
+      document.getElementById("editDate").value = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+      document.getElementById("editHours").value = Math.floor(Number(session.minutes||0)/60);
+      document.getElementById("editMinutes").value = Number(session.minutes||0)%60;
+      document.getElementById("editNote").value = session.note || "";
+      editDialog.showModal();
+    }
+
+    document.getElementById("historyList").addEventListener("click", event => {
+      if(event.target.closest(".delete-session")) return;
+      const item = event.target.closest(".history-item");
+      if(!item) return;
+      openEditSession(item.dataset.id);
+    });
+
+    document.getElementById("closeEdit").addEventListener("click",()=>editDialog.close());
+
+    document.getElementById("saveEditedSession").addEventListener("click",()=>{
+      const session = sessions.find(s=>s.id===editingSessionId);
+      if(!session) return;
+      const hours = Number(document.getElementById("editHours").value||0);
+      const mins = Number(document.getElementById("editMinutes").value||0);
+      const total = hours*60+mins;
+      const dateValue = document.getElementById("editDate").value;
+      if(!dateValue || total<1) return;
+      session.minutes = total;
+      session.note = document.getElementById("editNote").value.trim();
+      session.date = new Date(`${dateValue}T12:00:00`).toISOString();
+      saveSessions();
+      editDialog.close();
+      renderHistory();
+    });
+
+    document.getElementById("deleteEditedSession").addEventListener("click",()=>{
+      if(!editingSessionId) return;
+      if(!confirm("Delete this session? This cannot be undone.")) return;
+      sessions = sessions.filter(s=>s.id!==editingSessionId);
+      saveSessions();
+      editDialog.close();
+      renderHistory();
+    });
 
     document.getElementById("historyList").addEventListener("click", event => {
       const button = event.target.closest(".delete-session");
@@ -798,7 +1048,7 @@
       const previousTotal=sumMinutesBetween(previousStart,previousEnd);
       const changeEl=document.getElementById("trendChange");
       if(previousTotal===0){
-        changeEl.textContent=total>0 ? "Your first recorded period" : "No previous data";
+        changeEl.textContent=total>0 ? "Your first recorded period" : "Your graph begins with one session";
       }else{
         const pct=Math.round(((total-previousTotal)/previousTotal)*100);
         changeEl.textContent=`${pct>=0?"+":""}${pct}% vs. previous period`;
@@ -865,6 +1115,19 @@
     }
 
     document.getElementById("statsButton").addEventListener("click",openStats);
+
+    function bindStatsSurface(element){
+      if(!element) return;
+      element.addEventListener("click", openStats);
+      element.addEventListener("keydown", event => {
+        if(event.key === "Enter" || event.key === " "){
+          event.preventDefault();
+          openStats();
+        }
+      });
+    }
+    bindStatsSurface(document.getElementById("summaryStats"));
+
     document.getElementById("closeStats").addEventListener("click",()=>statsDialog.close());
     document.getElementById("statsHistoryButton").addEventListener("click",()=>{
       statsDialog.close();
@@ -951,7 +1214,8 @@
     });
 
     const openHistory = () => { renderHistory(); historyDialog.showModal(); };
-    document.getElementById("menuButton").addEventListener("click", openHistory);
+    document.getElementById("historyTopButton").addEventListener("click", openHistory);
+    document.getElementById("statsTopButton").addEventListener("click", openStats);
     document.getElementById("closeHistory").addEventListener("click", () => historyDialog.close());
 
     document.getElementById("exportButton").addEventListener("click", () => {
@@ -966,21 +1230,26 @@
 
 
     const wavePaths = [
-      { el: document.getElementById("waveOne"), amplitude: 22, wavelength: 145, speed: 0.00105, phase: 0 },
-      { el: document.getElementById("waveTwo"), amplitude: 13, wavelength: 92, speed: -0.00145, phase: 1.6 },
-      { el: document.getElementById("waveThree"), amplitude: 8, wavelength: 58, speed: 0.00185, phase: 3.1 }
+      { el: document.getElementById("waveOne"), amplitude: 25, wavelength: 180, speed: 0.00092, phase: 0, ratio: 1.0 },
+      { el: document.getElementById("waveTwo"), amplitude: 14, wavelength: 90, speed: -0.00138, phase: 1.3, ratio: 2.0 },
+      { el: document.getElementById("waveThree"), amplitude: 10, wavelength: 120, speed: 0.00116, phase: 2.6, ratio: 1.5 },
+      { el: document.getElementById("waveFour"), amplitude: 12, wavelength: 144, speed: -0.00078, phase: 0.7, ratio: 1.25 },
+      { el: document.getElementById("waveFive"), amplitude: 5, wavelength: 45, speed: 0.00225, phase: 3.4, ratio: 4.0 }
     ];
 
     function drawWave(path, time, active){
       const center = 130;
-      const amp = path.amplitude * (active ? 1.18 : .62);
-      const harmonic = active ? .26 : .16;
+      const amp = path.amplitude * (active ? 1.34 : .72);
+      const harmonic = active ? .34 : .20;
       let d = "";
       for (let x = 0; x <= 600; x += 6){
         const primary = Math.sin((x / path.wavelength) * Math.PI * 2 + time * path.speed + path.phase);
         const overtone = Math.sin((x / (path.wavelength / 2)) * Math.PI * 2 - time * path.speed * .65);
-        const envelope = .72 + .28 * Math.sin((x / 600) * Math.PI);
-        const y = center + (primary + overtone * harmonic) * amp * envelope;
+        const thirdHarmonic = Math.sin((x / (path.wavelength / 3)) * Math.PI * 2 + time * path.speed * .42);
+        const slowBreath = 0.90 + 0.10 * Math.sin(time * 0.00065 + path.phase);
+        const envelope = .68 + .32 * Math.sin((x / 600) * Math.PI);
+        const harmonicBlend = primary + overtone * harmonic + thirdHarmonic * .09;
+        const y = center + harmonicBlend * amp * envelope * slowBreath;
         d += `${x === 0 ? "M" : "L"}${x.toFixed(1)},${y.toFixed(1)} `;
       }
       path.el.setAttribute("d", d);
