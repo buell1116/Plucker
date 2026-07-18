@@ -7,7 +7,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Plucker" />
-  <title>Plucker V3</title>
+  <title>Plucker V5</title>
   <style>
     :root{
       --bg1:#070b26;
@@ -18,9 +18,9 @@
       --glass:rgba(255,255,255,.10);
       --glass-border:rgba(255,255,255,.14);
       --shadow:0 22px 60px rgba(3,4,24,.42);
-      --accent:#67e8f9;
-      --accent2:#22d3b6;
-      --danger:#2cb6aa;
+      --accent:#d97732;
+      --accent2:#a9471f;
+      --danger:#c94d3f;
     }
 
     *{box-sizing:border-box}
@@ -28,7 +28,7 @@
     body{
       min-height:100dvh;
       background:
-        radial-gradient(circle at 50% 10%, rgba(91,220,255,.20), transparent 30%),
+        radial-gradient(circle at 50% 10%, rgba(223,112,43,.18), transparent 30%),
         radial-gradient(circle at 86% 88%, rgba(116,92,255,.28), transparent 34%),
         radial-gradient(circle at 12% 72%, rgba(41,181,255,.16), transparent 28%),
         linear-gradient(160deg,var(--bg1),var(--bg2) 54%,var(--bg3));
@@ -82,6 +82,28 @@
       position:relative;
     }
 
+
+    .hero > *:not(.wave-field){position:relative;z-index:2}
+    .wave-field{
+      position:absolute;
+      inset:8% -22px 10%;
+      z-index:1;
+      opacity:.42;
+      pointer-events:none;
+      mask-image:linear-gradient(to bottom,transparent 0%,black 18%,black 82%,transparent 100%);
+      -webkit-mask-image:linear-gradient(to bottom,transparent 0%,black 18%,black 82%,transparent 100%);
+    }
+    .wave-field svg{width:100%;height:100%;overflow:visible}
+    .wave{
+      fill:none;
+      stroke-linecap:round;
+      vector-effect:non-scaling-stroke;
+    }
+    .wave-one{stroke:rgba(238,151,88,.46);stroke-width:2.2}
+    .wave-two{stroke:rgba(255,220,190,.22);stroke-width:1.5}
+    .wave-three{stroke:rgba(183,102,206,.20);stroke-width:1.2}
+    .hero.is-running .wave-field{opacity:.72}
+
     .eyebrow{
       font-size:.86rem;
       color:var(--muted);
@@ -99,21 +121,21 @@
     }
 
     .orb{
-      width:235px;
+      width:270px;
       aspect-ratio:1;
       border-radius:50%;
       border:0;
-      color:#08333a;
-      font-size:1rem;
+      color:#2b140d;
+      font-size:1.08rem;
       font-weight:800;
       letter-spacing:.11em;
       background:
-        radial-gradient(circle at 35% 28%, #d9fbff 0%, #8eeef2 28%, #36d6c7 68%, #168f9c 100%);
+        radial-gradient(circle at 35% 28%, #ffd6b2 0%, #e99855 28%, #c55a28 68%, #79331c 100%);
       box-shadow:
-        0 26px 70px rgba(42,220,220,.28),
-        0 0 0 12px rgba(255,255,255,.035),
+        0 26px 70px rgba(211,93,37,.36),
+        0 0 0 18px rgba(255,255,255,.045),
         inset 0 5px 12px rgba(255,255,255,.38),
-        inset 0 -14px 25px rgba(5,91,104,.30);
+        inset 0 -14px 25px rgba(74,24,13,.34);
       transition:transform .22s ease, filter .22s ease, box-shadow .22s ease;
       position:relative;
       overflow:hidden;
@@ -131,13 +153,13 @@
     .orb:active{transform:scale(.97)}
     .orb.running{
       animation:pulse 2.3s ease-in-out infinite;
-      background:radial-gradient(circle at 35% 28%, #e3fdff 0%, #70e8e4 34%, #28c6bd 72%, #0b6f7c 100%);
+      background:radial-gradient(circle at 35% 28%, #ffe0c2 0%, #df8746 34%, #b64c25 72%, #6c2d1b 100%);
       color:#fff4e8;
     }
 
     @keyframes pulse{
-      0%,100%{box-shadow:0 26px 70px rgba(42,220,220,.28),0 0 0 12px rgba(255,255,255,.035),inset 0 5px 12px rgba(255,255,255,.35),inset 0 -14px 25px rgba(5,91,104,.30)}
-      50%{box-shadow:0 30px 82px rgba(33,202,204,.42),0 0 0 18px rgba(112,236,235,.10),inset 0 5px 12px rgba(255,255,255,.35),inset 0 -14px 25px rgba(5,91,104,.30)}
+      0%,100%{box-shadow:0 26px 70px rgba(211,93,37,.36),0 0 0 12px rgba(255,255,255,.035),inset 0 5px 12px rgba(255,255,255,.35),inset 0 -14px 25px rgba(74,24,13,.34)}
+      50%{box-shadow:0 30px 82px rgba(199,76,31,.48),0 0 0 18px rgba(232,136,72,.10),inset 0 5px 12px rgba(255,255,255,.35),inset 0 -14px 25px rgba(74,24,13,.34)}
     }
 
     .subline{
@@ -182,7 +204,7 @@
     .bars{display:grid;grid-template-columns:repeat(7,1fr);gap:9px;align-items:end;height:110px}
     .day{display:flex;flex-direction:column;align-items:center;gap:8px;height:100%;justify-content:flex-end}
     .bar-track{height:84px;width:100%;border-radius:999px;background:rgba(255,255,255,.07);display:flex;align-items:flex-end;overflow:hidden}
-    .bar-fill{width:100%;min-height:4px;border-radius:999px;background:linear-gradient(180deg,#a7f3f0,#27d4c2);box-shadow:0 0 16px rgba(39,212,194,.28)}
+    .bar-fill{width:100%;min-height:4px;border-radius:999px;background:linear-gradient(180deg,#e9a268,#b95429);box-shadow:0 0 16px rgba(201,83,38,.30)}
     .day-label{font-size:.7rem;color:rgba(247,234,216,.65)}
 
     .footer-actions{
@@ -234,16 +256,83 @@
     .cancel{background:#e8dff7;color:#4c3a67}
     .save{background:#7b4bc4;color:white}
 
+
+    .stats-modal{max-height:88dvh;overflow:auto;padding-bottom:24px}
+    .stats-top{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+    .stats-close{border:0;background:#e8dff7;color:#4c3a67;width:38px;height:38px;border-radius:50%;font-size:1.35rem}
+    .range-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:18px 0 14px}
+    .range-tab{border:0;border-radius:999px;padding:10px 8px;background:#e8dff7;color:#615176;font-weight:800}
+    .range-tab.active{background:#332149;color:#fff7f2}
+    .trend-card,.insight-card,.visual-metrics{
+      background:#28252c;color:#fff;border-radius:24px;padding:18px;margin-top:12px;
+      box-shadow:inset 0 0 0 1px rgba(255,255,255,.05)
+    }
+    .trend-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}
+    .trend-label,.insight-kicker{font-size:.78rem;color:#d97732;font-weight:800;letter-spacing:.04em}
+    .trend-value{font-size:2.2rem;font-weight:750;margin-top:4px}
+    .trend-change{font-size:.78rem;color:#bbb5c3;text-align:right;max-width:135px}
+    .chart-wrap{position:relative;height:220px;margin-top:12px;touch-action:none}
+    #trendChart{width:100%;height:100%;overflow:visible}
+    .line-path{fill:none;stroke:#d97732;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+    .area-path{fill:url(#areaFill)}
+    .hover-line{stroke:rgba(255,255,255,.35);stroke-width:1;stroke-dasharray:4 5;opacity:0}
+    .hover-dot{fill:#d97732;stroke:#fff;stroke-width:3;opacity:0}
+    .chart-tooltip{
+      position:absolute;transform:translate(-50%,-110%);background:#f5f1f8;color:#2b2432;
+      border-radius:12px;padding:8px 10px;font-size:.76rem;font-weight:800;pointer-events:none;
+      opacity:0;white-space:nowrap;box-shadow:0 10px 28px rgba(0,0,0,.24)
+    }
+    .chart-axis{display:flex;justify-content:space-between;color:#918a98;font-size:.72rem;margin-top:-2px}
+    .insight-title{font-size:1.18rem;font-weight:750;line-height:1.35;margin:12px 0 18px}
+    .comparison-bars{display:grid;gap:15px}
+    .comparison-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;color:#ddd8e2}
+    .comparison-label strong{font-size:1.02rem;color:#fff}
+    .comparison-track{height:14px;border-radius:999px;background:#4c4950;overflow:hidden}
+    .comparison-fill{height:100%;border-radius:999px;transition:width .5s ease}
+    .comparison-fill.current{background:#d97732}
+    .comparison-fill.previous{background:#77727c}
+    .visual-metrics{display:grid;grid-template-columns:126px 1fr;gap:18px;align-items:center}
+    .metric-ring{
+      --pct:0;
+      width:118px;aspect-ratio:1;border-radius:50%;
+      background:conic-gradient(#d97732 calc(var(--pct)*1%),#4b4750 0);
+      display:grid;place-items:center;position:relative
+    }
+    .metric-ring::before{content:"";position:absolute;inset:10px;border-radius:50%;background:#28252c}
+    .metric-ring>div{position:relative;z-index:1;text-align:center}
+    .metric-ring strong{display:block;font-size:1.55rem}
+    .metric-ring span{font-size:.68rem;color:#aaa4af}
+    .metric-title{font-size:1.05rem;font-weight:750;margin-top:7px;line-height:1.35}
+    .metric-caption{font-size:.8rem;color:#aaa4af;margin-top:7px;line-height:1.4}
+    .stats-mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+    .stats-mini{background:#ede7f6;border-radius:18px;padding:14px;color:#2c2338}
+    .stats-mini span{display:block;font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;color:#776886}
+    .stats-mini strong{display:block;margin-top:6px;font-size:1.1rem}
+    .stats-history-btn{width:100%;margin-top:12px;background:#332149;color:#fff}
+    @media(max-width:380px){
+      .visual-metrics{grid-template-columns:104px 1fr}
+      .metric-ring{width:98px}
+    }
+
     .history-list{display:grid;gap:10px;max-height:46vh;overflow:auto;margin-top:16px}
     .history-item{display:flex;justify-content:space-between;gap:14px;padding:14px;border-radius:16px;background:rgba(86,58,130,.08)}
     .history-main{min-width:0}
     .history-date{font-weight:800}
     .history-note{font-size:.84rem;color:#6c6080;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:3px}
     .history-duration{font-weight:800;white-space:nowrap}
+
+    .history-actions{display:flex;align-items:center;gap:10px}
+    .delete-session{
+      width:34px;height:34px;border-radius:50%;border:0;
+      background:rgba(201,77,63,.12);color:#a53d35;
+      font-size:1rem;font-weight:800;
+    }
+    .delete-session:active{transform:scale(.95)}
+
     .empty{color:#6c6080;text-align:center;padding:24px 0}
 
     @media (max-width:380px){
-      .orb{width:210px}
+      .orb{width:235px}
       .stats-grid{grid-template-columns:1fr}
       .hero{min-height:390px}
     }
@@ -257,6 +346,13 @@
     </header>
 
     <section class="hero">
+      <div class="wave-field" aria-hidden="true">
+        <svg viewBox="0 0 600 260" preserveAspectRatio="none">
+          <path class="wave wave-one" id="waveOne"></path>
+          <path class="wave wave-two" id="waveTwo"></path>
+          <path class="wave wave-three" id="waveThree"></path>
+        </svg>
+      </div>
       <div class="eyebrow" id="eyebrow">Ready when you are.</div>
       <div class="timer" id="timer">00:00</div>
       <button class="orb" id="practiceButton">START PRACTICE</button>
@@ -288,7 +384,7 @@
 
     <section class="footer-actions">
       <button class="secondary" id="manualButton">＋ Log session</button>
-      <button class="secondary" id="historyButton">View history</button>
+      <button class="secondary" id="statsButton">View stats</button>
     </section>
   </main>
 
@@ -329,6 +425,101 @@
     </form>
   </dialog>
 
+
+  <dialog id="statsDialog">
+    <div class="modal stats-modal">
+      <div class="stats-top">
+        <div>
+          <h2>Your practice</h2>
+          <p>See how your playing is building over time.</p>
+        </div>
+        <button type="button" class="stats-close" id="closeStats" aria-label="Close stats">×</button>
+      </div>
+
+      <div class="range-tabs" role="tablist" aria-label="Stats range">
+        <button type="button" class="range-tab active" data-range="7">7D</button>
+        <button type="button" class="range-tab" data-range="28">4W</button>
+        <button type="button" class="range-tab" data-range="90">3M</button>
+        <button type="button" class="range-tab" data-range="365">1Y</button>
+      </div>
+
+      <section class="trend-card">
+        <div class="trend-head">
+          <div>
+            <div class="trend-label">Practice time</div>
+            <div class="trend-value" id="trendValue">0m</div>
+          </div>
+          <div class="trend-change" id="trendChange">No previous data</div>
+        </div>
+        <div class="chart-wrap">
+          <svg id="trendChart" viewBox="0 0 640 260" preserveAspectRatio="none" role="img" aria-label="Practice time trend">
+            <defs>
+              <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#d97732" stop-opacity=".40"/>
+                <stop offset="100%" stop-color="#d97732" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path id="areaPath" class="area-path"></path>
+            <path id="linePath" class="line-path"></path>
+            <line id="hoverLine" class="hover-line" x1="0" x2="0" y1="8" y2="230"></line>
+            <circle id="hoverDot" class="hover-dot" cx="0" cy="0" r="6"></circle>
+          </svg>
+          <div class="chart-tooltip" id="chartTooltip"></div>
+        </div>
+        <div class="chart-axis"><span id="axisStart"></span><span id="axisEnd"></span></div>
+      </section>
+
+      <section class="insight-card" id="weeklyInsight">
+        <div class="insight-kicker">Practice</div>
+        <div class="insight-title" id="weeklyInsightTitle">Start playing to unlock insights.</div>
+        <div class="comparison-bars">
+          <div class="comparison-row">
+            <div class="comparison-label"><span>This week</span><strong id="thisWeekCompare">0m</strong></div>
+            <div class="comparison-track"><div class="comparison-fill current" id="thisWeekBar"></div></div>
+          </div>
+          <div class="comparison-row">
+            <div class="comparison-label"><span>Last week</span><strong id="lastWeekCompare">0m</strong></div>
+            <div class="comparison-track"><div class="comparison-fill previous" id="lastWeekBar"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="visual-metrics">
+        <div class="visual-metric">
+          <div class="metric-ring" id="consistencyRing">
+            <div><strong id="consistencyValue">0%</strong><span>consistency</span></div>
+          </div>
+        </div>
+        <div class="metric-copy">
+          <div class="insight-kicker">Rhythm</div>
+          <div class="metric-title" id="consistencyTitle">Your weekly rhythm will appear here.</div>
+          <div class="metric-caption" id="consistencyCaption">Practice on more days to build a stronger pattern.</div>
+        </div>
+      </section>
+
+      <section class="stats-mini-grid">
+        <div class="stats-mini">
+          <span>Current streak</span>
+          <strong id="streakStat">0 days</strong>
+        </div>
+        <div class="stats-mini">
+          <span>Avg. session</span>
+          <strong id="avgSessionStat">0m</strong>
+        </div>
+        <div class="stats-mini">
+          <span>Best day</span>
+          <strong id="bestDayStat">—</strong>
+        </div>
+        <div class="stats-mini">
+          <span>Total sessions</span>
+          <strong id="totalSessionsStat">0</strong>
+        </div>
+      </section>
+
+      <button type="button" class="secondary stats-history-btn" id="statsHistoryButton">View practice history</button>
+    </div>
+  </dialog>
+
   <dialog id="historyDialog">
     <div class="modal">
       <h2>Practice history</h2>
@@ -355,6 +546,7 @@
     const subline = document.getElementById("subline");
     const manualDialog = document.getElementById("manualDialog");
     const historyDialog = document.getElementById("historyDialog");
+    const statsDialog = document.getElementById("statsDialog");
     const sessionDate = document.getElementById("sessionDate");
     const sessionHours = document.getElementById("sessionHours");
     const sessionMinutes = document.getElementById("sessionMinutes");
@@ -427,6 +619,7 @@
     function updateRunningUI(){
       const active = !!runningStart;
       practiceButton.classList.toggle("running", active);
+      document.querySelector(".hero").classList.toggle("is-running", active);
       practiceButton.textContent = active ? "STOP PRACTICE" : "START PRACTICE";
       eyebrow.textContent = active ? "You’re making music." : "Ready when you are.";
       subline.textContent = active ? "Stay here as long as you like." : "Tap once. Play. Tap again.";
@@ -491,10 +684,231 @@
             <div class="history-date">${dateText}</div>
             <div class="history-note">${s.note ? escapeHtml(s.note) : "Practice session"}</div>
           </div>
-          <div class="history-duration">${formatDuration(s.minutes)}</div>
+          <div class="history-actions">
+            <div class="history-duration">${formatDuration(s.minutes)}</div>
+            <button type="button" class="delete-session" data-id="${s.id}" aria-label="Delete ${dateText} session">×</button>
+          </div>
         </div>`;
       }).join("");
     }
+
+
+    document.getElementById("historyList").addEventListener("click", event => {
+      const button = event.target.closest(".delete-session");
+      if (!button) return;
+      const session = sessions.find(s => s.id === button.dataset.id);
+      if (!session) return;
+      const label = `${formatDuration(session.minutes)} session`;
+      if (!confirm(`Delete this ${label}? This cannot be undone.`)) return;
+      sessions = sessions.filter(s => s.id !== button.dataset.id);
+      saveSessions();
+      renderHistory();
+    });
+
+
+    let currentStatsRange = 7;
+
+    function startOfDay(date){
+      const d = new Date(date);
+      d.setHours(0,0,0,0);
+      return d;
+    }
+
+    function dayKey(date){
+      const d = new Date(date);
+      return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
+    }
+
+    function dailyTotalsForRange(days){
+      const today = startOfDay(new Date());
+      const start = new Date(today);
+      start.setDate(start.getDate() - days + 1);
+      const values = [];
+      for(let i=0;i<days;i++){
+        const d = new Date(start);
+        d.setDate(start.getDate()+i);
+        values.push({date:d, key:dayKey(d), minutes:0});
+      }
+      const map = new Map(values.map(v => [v.key,v]));
+      sessions.forEach(s => {
+        const key = dayKey(new Date(s.date));
+        if(map.has(key)) map.get(key).minutes += Number(s.minutes || 0);
+      });
+      return values;
+    }
+
+    function smoothPoints(points){
+      if(points.length < 3) return points;
+      return points.map((p,i) => {
+        const prev = points[Math.max(0,i-1)].minutes;
+        const next = points[Math.min(points.length-1,i+1)].minutes;
+        return {...p, smooth:(prev + p.minutes*2 + next)/4};
+      });
+    }
+
+    function buildPath(points, width=640, height=230){
+      const max = Math.max(30,...points.map(p => p.smooth ?? p.minutes));
+      const x = i => points.length===1 ? width/2 : (i/(points.length-1))*width;
+      const y = v => height - 10 - ((v/max)*(height-28));
+      const coords = points.map((p,i)=>({x:x(i),y:y(p.smooth ?? p.minutes)}));
+      if(!coords.length) return {line:"",area:"",coords,max};
+      let line = `M${coords[0].x},${coords[0].y}`;
+      for(let i=1;i<coords.length;i++){
+        const p0=coords[i-1], p1=coords[i];
+        const cx=(p0.x+p1.x)/2;
+        line += ` C${cx},${p0.y} ${cx},${p1.y} ${p1.x},${p1.y}`;
+      }
+      const area = `${line} L${coords[coords.length-1].x},${height} L${coords[0].x},${height} Z`;
+      return {line,area,coords,max};
+    }
+
+    function sumMinutesBetween(start,end){
+      return sessions.reduce((total,s)=>{
+        const d=new Date(s.date);
+        return total + (d>=start && d<end ? Number(s.minutes||0):0);
+      },0);
+    }
+
+    function calculateStreak(){
+      const practiced = new Set(sessions.filter(s=>Number(s.minutes||0)>0).map(s=>dayKey(new Date(s.date))));
+      let d=startOfDay(new Date());
+      if(!practiced.has(dayKey(d))){
+        d.setDate(d.getDate()-1);
+      }
+      let count=0;
+      while(practiced.has(dayKey(d))){
+        count++;
+        d.setDate(d.getDate()-1);
+      }
+      return count;
+    }
+
+    function renderStats(){
+      const values = dailyTotalsForRange(currentStatsRange);
+      const smoothed = smoothPoints(values);
+      const total = values.reduce((a,v)=>a+v.minutes,0);
+      document.getElementById("trendValue").textContent = formatDuration(total);
+
+      const today=startOfDay(new Date());
+      const currentStart=new Date(today);
+      currentStart.setDate(currentStart.getDate()-currentStatsRange+1);
+      const previousEnd=new Date(currentStart);
+      const previousStart=new Date(previousEnd);
+      previousStart.setDate(previousStart.getDate()-currentStatsRange);
+      const previousTotal=sumMinutesBetween(previousStart,previousEnd);
+      const changeEl=document.getElementById("trendChange");
+      if(previousTotal===0){
+        changeEl.textContent=total>0 ? "Your first recorded period" : "No previous data";
+      }else{
+        const pct=Math.round(((total-previousTotal)/previousTotal)*100);
+        changeEl.textContent=`${pct>=0?"+":""}${pct}% vs. previous period`;
+      }
+
+      const paths=buildPath(smoothed);
+      document.getElementById("linePath").setAttribute("d",paths.line);
+      document.getElementById("areaPath").setAttribute("d",paths.area);
+      document.getElementById("trendChart").dataset.coords=JSON.stringify(paths.coords);
+      document.getElementById("trendChart").dataset.values=JSON.stringify(values.map(v=>({
+        minutes:v.minutes,
+        label:v.date.toLocaleDateString(undefined,{month:"short",day:"numeric"})
+      })));
+      document.getElementById("axisStart").textContent=values[0]?.date.toLocaleDateString(undefined,{month:"short",day:"numeric"})||"";
+      document.getElementById("axisEnd").textContent=values.at(-1)?.date.toLocaleDateString(undefined,{month:"short",day:"numeric"})||"";
+
+      const weekStart=startOfWeek(today);
+      const lastWeekStart=new Date(weekStart); lastWeekStart.setDate(lastWeekStart.getDate()-7);
+      const nextWeekStart=new Date(weekStart); nextWeekStart.setDate(nextWeekStart.getDate()+7);
+      const thisWeek=sumMinutesBetween(weekStart,nextWeekStart);
+      const lastWeek=sumMinutesBetween(lastWeekStart,weekStart);
+      document.getElementById("thisWeekCompare").textContent=formatDuration(thisWeek);
+      document.getElementById("lastWeekCompare").textContent=formatDuration(lastWeek);
+      const barMax=Math.max(thisWeek,lastWeek,30);
+      document.getElementById("thisWeekBar").style.width=`${Math.max(3,thisWeek/barMax*100)}%`;
+      document.getElementById("lastWeekBar").style.width=`${Math.max(3,lastWeek/barMax*100)}%`;
+      const insight=document.getElementById("weeklyInsightTitle");
+      if(thisWeek===0 && lastWeek===0) insight.textContent="Your weekly comparison will appear after you log a session.";
+      else if(lastWeek===0) insight.textContent=`You’ve practiced ${formatDuration(thisWeek)} this week.`;
+      else if(thisWeek>lastWeek) insight.textContent=`You’re ${formatDuration(thisWeek-lastWeek)} ahead of last week.`;
+      else if(thisWeek<lastWeek) insight.textContent=`You’re ${formatDuration(lastWeek-thisWeek)} behind last week so far.`;
+      else insight.textContent="You’re exactly matching last week.";
+
+      const recent7=dailyTotalsForRange(7);
+      const activeDays=recent7.filter(v=>v.minutes>0).length;
+      const consistency=Math.round(activeDays/7*100);
+      const ring=document.getElementById("consistencyRing");
+      ring.style.setProperty("--pct",consistency);
+      document.getElementById("consistencyValue").textContent=`${consistency}%`;
+      document.getElementById("consistencyTitle").textContent=
+        activeDays===0 ? "Your rhythm is waiting to begin." :
+        activeDays<=2 ? "A light practice rhythm is forming." :
+        activeDays<=4 ? "You’re building a steady weekly rhythm." :
+        "Your practice rhythm is highly consistent.";
+      document.getElementById("consistencyCaption").textContent=`You practiced on ${activeDays} of the last 7 days.`;
+
+      const streak=calculateStreak();
+      document.getElementById("streakStat").textContent=`${streak} day${streak===1?"":"s"}`;
+      const avg=sessions.length ? sessions.reduce((a,s)=>a+Number(s.minutes||0),0)/sessions.length : 0;
+      document.getElementById("avgSessionStat").textContent=formatDuration(avg);
+      const dayMap=new Map();
+      sessions.forEach(s=>{
+        const key=dayKey(new Date(s.date));
+        dayMap.set(key,(dayMap.get(key)||0)+Number(s.minutes||0));
+      });
+      const best=[...dayMap.entries()].sort((a,b)=>b[1]-a[1])[0];
+      document.getElementById("bestDayStat").textContent=best ? formatDuration(best[1]) : "—";
+      document.getElementById("totalSessionsStat").textContent=String(sessions.length);
+    }
+
+    function openStats(){
+      renderStats();
+      statsDialog.showModal();
+    }
+
+    document.getElementById("statsButton").addEventListener("click",openStats);
+    document.getElementById("closeStats").addEventListener("click",()=>statsDialog.close());
+    document.getElementById("statsHistoryButton").addEventListener("click",()=>{
+      statsDialog.close();
+      openHistory();
+    });
+
+    document.querySelectorAll(".range-tab").forEach(tab=>{
+      tab.addEventListener("click",()=>{
+        currentStatsRange=Number(tab.dataset.range);
+        document.querySelectorAll(".range-tab").forEach(t=>t.classList.toggle("active",t===tab));
+        renderStats();
+      });
+    });
+
+    const trendChart=document.getElementById("trendChart");
+    const chartWrap=trendChart.parentElement;
+    function showChartPoint(clientX){
+      const rect=trendChart.getBoundingClientRect();
+      const rel=Math.max(0,Math.min(rect.width,clientX-rect.left));
+      const coords=JSON.parse(trendChart.dataset.coords||"[]");
+      const vals=JSON.parse(trendChart.dataset.values||"[]");
+      if(!coords.length) return;
+      const idx=Math.round((rel/rect.width)*(coords.length-1));
+      const p=coords[idx], v=vals[idx];
+      const xPx=(p.x/640)*rect.width;
+      const yPx=(p.y/260)*rect.height;
+      const line=document.getElementById("hoverLine");
+      const dot=document.getElementById("hoverDot");
+      const tip=document.getElementById("chartTooltip");
+      line.setAttribute("x1",p.x); line.setAttribute("x2",p.x); line.style.opacity=1;
+      dot.setAttribute("cx",p.x); dot.setAttribute("cy",p.y); dot.style.opacity=1;
+      tip.style.left=`${xPx}px`; tip.style.top=`${yPx}px`;
+      tip.textContent=`${v.label} · ${formatDuration(v.minutes)}`;
+      tip.style.opacity=1;
+    }
+    function hideChartPoint(){
+      document.getElementById("hoverLine").style.opacity=0;
+      document.getElementById("hoverDot").style.opacity=0;
+      document.getElementById("chartTooltip").style.opacity=0;
+    }
+    chartWrap.addEventListener("pointermove",e=>showChartPoint(e.clientX));
+    chartWrap.addEventListener("pointerdown",e=>showChartPoint(e.clientX));
+    chartWrap.addEventListener("pointerleave",hideChartPoint);
+    chartWrap.addEventListener("pointerup",()=>setTimeout(hideChartPoint,900));
 
     function escapeHtml(str){
       return str.replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]));
@@ -537,7 +951,6 @@
     });
 
     const openHistory = () => { renderHistory(); historyDialog.showModal(); };
-    document.getElementById("historyButton").addEventListener("click", openHistory);
     document.getElementById("menuButton").addEventListener("click", openHistory);
     document.getElementById("closeHistory").addEventListener("click", () => historyDialog.close());
 
@@ -550,6 +963,35 @@
       a.click();
       URL.revokeObjectURL(url);
     });
+
+
+    const wavePaths = [
+      { el: document.getElementById("waveOne"), amplitude: 22, wavelength: 145, speed: 0.00105, phase: 0 },
+      { el: document.getElementById("waveTwo"), amplitude: 13, wavelength: 92, speed: -0.00145, phase: 1.6 },
+      { el: document.getElementById("waveThree"), amplitude: 8, wavelength: 58, speed: 0.00185, phase: 3.1 }
+    ];
+
+    function drawWave(path, time, active){
+      const center = 130;
+      const amp = path.amplitude * (active ? 1.18 : .62);
+      const harmonic = active ? .26 : .16;
+      let d = "";
+      for (let x = 0; x <= 600; x += 6){
+        const primary = Math.sin((x / path.wavelength) * Math.PI * 2 + time * path.speed + path.phase);
+        const overtone = Math.sin((x / (path.wavelength / 2)) * Math.PI * 2 - time * path.speed * .65);
+        const envelope = .72 + .28 * Math.sin((x / 600) * Math.PI);
+        const y = center + (primary + overtone * harmonic) * amp * envelope;
+        d += `${x === 0 ? "M" : "L"}${x.toFixed(1)},${y.toFixed(1)} `;
+      }
+      path.el.setAttribute("d", d);
+    }
+
+    function animateWaves(time){
+      const active = !!runningStart;
+      wavePaths.forEach(path => drawWave(path, time, active));
+      requestAnimationFrame(animateWaves);
+    }
+    requestAnimationFrame(animateWaves);
 
     render();
     updateRunningUI();
