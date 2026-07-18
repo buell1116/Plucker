@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#2b1b17" />
+  <meta name="theme-color" content="#070b26" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Plucker" />
-  <title>Plucker</title>
+  <title>Plucker V3</title>
   <style>
     :root{
       --bg1:#070b26;
@@ -18,9 +18,9 @@
       --glass:rgba(255,255,255,.10);
       --glass-border:rgba(255,255,255,.14);
       --shadow:0 22px 60px rgba(3,4,24,.42);
-      --accent:#ff8f76;
-      --accent2:#ff5f7f;
-      --danger:#d94b63;
+      --accent:#67e8f9;
+      --accent2:#22d3b6;
+      --danger:#2cb6aa;
     }
 
     *{box-sizing:border-box}
@@ -28,9 +28,9 @@
     body{
       min-height:100dvh;
       background:
-        radial-gradient(circle at 50% 10%, rgba(255,121,164,.24), transparent 30%),
+        radial-gradient(circle at 50% 10%, rgba(91,220,255,.20), transparent 30%),
         radial-gradient(circle at 86% 88%, rgba(116,92,255,.28), transparent 34%),
-        radial-gradient(circle at 12% 72%, rgba(41,181,255,.13), transparent 28%),
+        radial-gradient(circle at 12% 72%, rgba(41,181,255,.16), transparent 28%),
         linear-gradient(160deg,var(--bg1),var(--bg2) 54%,var(--bg3));
       background-attachment:fixed;
       overflow-x:hidden;
@@ -103,17 +103,17 @@
       aspect-ratio:1;
       border-radius:50%;
       border:0;
-      color:#34152b;
+      color:#08333a;
       font-size:1rem;
       font-weight:800;
       letter-spacing:.11em;
       background:
-        radial-gradient(circle at 35% 28%, #ffd8d2 0%, #ff9e92 28%, #ff6b82 68%, #c53d74 100%);
+        radial-gradient(circle at 35% 28%, #d9fbff 0%, #8eeef2 28%, #36d6c7 68%, #168f9c 100%);
       box-shadow:
-        0 26px 70px rgba(255,68,130,.30),
+        0 26px 70px rgba(42,220,220,.28),
         0 0 0 12px rgba(255,255,255,.035),
         inset 0 5px 12px rgba(255,255,255,.38),
-        inset 0 -14px 25px rgba(87,21,80,.28);
+        inset 0 -14px 25px rgba(5,91,104,.30);
       transition:transform .22s ease, filter .22s ease, box-shadow .22s ease;
       position:relative;
       overflow:hidden;
@@ -131,13 +131,13 @@
     .orb:active{transform:scale(.97)}
     .orb.running{
       animation:pulse 2.3s ease-in-out infinite;
-      background:radial-gradient(circle at 35% 28%, #ffd9e2 0%, #ff7f9e 34%, #d94f8d 72%, #76265e 100%);
+      background:radial-gradient(circle at 35% 28%, #e3fdff 0%, #70e8e4 34%, #28c6bd 72%, #0b6f7c 100%);
       color:#fff4e8;
     }
 
     @keyframes pulse{
-      0%,100%{box-shadow:0 26px 70px rgba(255,68,130,.30),0 0 0 12px rgba(255,255,255,.035),inset 0 5px 12px rgba(255,255,255,.35),inset 0 -14px 25px rgba(87,21,80,.28)}
-      50%{box-shadow:0 30px 82px rgba(219,65,151,.46),0 0 0 18px rgba(255,139,185,.08),inset 0 5px 12px rgba(255,255,255,.35),inset 0 -14px 25px rgba(87,21,80,.28)}
+      0%,100%{box-shadow:0 26px 70px rgba(42,220,220,.28),0 0 0 12px rgba(255,255,255,.035),inset 0 5px 12px rgba(255,255,255,.35),inset 0 -14px 25px rgba(5,91,104,.30)}
+      50%{box-shadow:0 30px 82px rgba(33,202,204,.42),0 0 0 18px rgba(112,236,235,.10),inset 0 5px 12px rgba(255,255,255,.35),inset 0 -14px 25px rgba(5,91,104,.30)}
     }
 
     .subline{
@@ -182,7 +182,7 @@
     .bars{display:grid;grid-template-columns:repeat(7,1fr);gap:9px;align-items:end;height:110px}
     .day{display:flex;flex-direction:column;align-items:center;gap:8px;height:100%;justify-content:flex-end}
     .bar-track{height:84px;width:100%;border-radius:999px;background:rgba(255,255,255,.07);display:flex;align-items:flex-end;overflow:hidden}
-    .bar-fill{width:100%;min-height:4px;border-radius:999px;background:linear-gradient(180deg,#ffb2c2,#ff668c);box-shadow:0 0 16px rgba(255,102,140,.24)}
+    .bar-fill{width:100%;min-height:4px;border-radius:999px;background:linear-gradient(180deg,#a7f3f0,#27d4c2);box-shadow:0 0 16px rgba(39,212,194,.28)}
     .day-label{font-size:.7rem;color:rgba(247,234,216,.65)}
 
     .footer-actions{
